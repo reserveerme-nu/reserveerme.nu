@@ -3,7 +3,7 @@ name: Vue CLI
 on: [push]
 
 jobs:
-  build:
+  CI:
 
     runs-on: ubuntu-latest
 
