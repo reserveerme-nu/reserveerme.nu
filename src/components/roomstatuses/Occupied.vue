@@ -10,8 +10,8 @@
         </b-row>
         <b-row>
             <b-col>
-                <p>4th Floor</p>
-                <p>4 Persons</p>
+                <p id="floor">4th Floor</p>
+                <p id="size">4 Persons</p>
             </b-col>
         </b-row>
         <b-row>
@@ -83,7 +83,9 @@
         font-size: 30px;
         padding-left: 15px;
         padding-right: 15px;
-        margin-top: 20px;
+        margin: 20px 20px 20px 0px;
+        background: #ffffff;
+        border: solid medium #ffffff;
     }
     #logo{
         position: absolute;
@@ -120,10 +122,14 @@
         position: absolute;
         bottom: 50px;
         left: 50px;
+        color: #ffffff;
+        background: transparent;
     }
     #end {
         position: absolute;
         bottom: 110px;
         left: 50px;
+        color: #ffffff;
+        background: transparent;
     }
 </style>

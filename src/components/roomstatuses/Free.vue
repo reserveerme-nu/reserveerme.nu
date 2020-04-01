@@ -10,8 +10,8 @@
         </b-row>
         <b-row>
             <b-col>
-                <p>4th Floor</p>
-                <p>4 Persons</p>
+                <p id="floor">4th Floor</p>
+                <p id="size">4 Persons</p>
             </b-col>
         </b-row>
         <b-row>
@@ -29,7 +29,7 @@
         </b-row>
 
         <div>
-            <button id="another" type="button">FIND ANOTHER MEETING ROOM</button>
+            <button id="more" type="button">FIND MORE FREE ROOMS</button>
         </div>
 
         <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
@@ -38,6 +38,7 @@
 
 <script>
     import DigitalClock from "vue-digital-clock";
+    import router from "../../router";
 
     export default {
         name: "Free",
@@ -46,7 +47,7 @@
         },
         methods: {
             reserveRoom: function() {
-                console.log("lmao")
+                router.push("/reserve");
             }
         }
     }
@@ -83,7 +84,9 @@
         font-size: 30px;
         padding-left: 15px;
         padding-right: 15px;
-        margin-top: 20px;
+        margin: 20px 20px 20px 0px;
+        background: #ffffff;
+        border: solid medium #ffffff;
     }
     #logo{
         position: absolute;
@@ -114,10 +117,12 @@
         padding-right: 50px;
         padding-top: 10px;
     }
-    #another{
+    #more{
         position: absolute;
         bottom: 50px;
         left: 50px;
+        background: transparent;
+        color: #ffffff;
     }
 
 

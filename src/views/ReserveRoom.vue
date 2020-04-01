@@ -1,0 +1,188 @@
+<template>
+    <b-container fluid>
+        <b-row>
+            <b-col cols="9" id="mainDiv">
+                <b-row id="titleDiv">
+                    <b-col cols="10">
+                        <h1>Reserve Asimov</h1>
+                    </b-col>
+                    <b-col cols="2">
+                        <digital-clock id="digiclock"></digital-clock>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <br><br><br>
+                        <p>How long is the meeting going to be?</p>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <button type="button" v-bind:class="{ active: isActive15 }" v-on:click="this.setTime15">15 MIN</button>
+                        <button type="button" v-bind:class="{ active: isActive30 }" v-on:click="this.setTime30">30 MIN</button>
+                        <button type="button" v-bind:class="{ active: isActive45 }" v-on:click="this.setTime45">45 MIN</button>
+                        <button type="button" v-bind:class="{ active: isActive60 }" v-on:click="this.setTime60">1 HOUR</button>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <br><br><br>
+                        <p>Who are you?</p>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <input>
+                    </b-col>
+                </b-row>
+                <div>
+                    <button id="start" type="button" v-on:click="this.startMeeting">START MEETING</button>
+                    <button id="cancel" type="button" v-on:click="this.cancel">CANCEL</button>
+                </div>
+            </b-col>
+            <b-col cols="3" id="calenderDiv">
+                <calender></calender>
+            </b-col>
+        </b-row>
+    </b-container>
+</template>
+
+<script>
+    import Calender from '../components/Calender.vue'
+    import DigitalClock from "vue-digital-clock";
+    import router from "../router";
+
+    export default {
+        name: "ReserveRoom",
+        components: {
+            DigitalClock,
+            Calender
+        },
+        data() {
+            return {
+                isActive15: true,
+                isActive30: false,
+                isActive45: false,
+                isActive60: false,
+            }
+        },
+        methods: {
+            resetTime: function() {
+                this.isActive15 = false;
+                this.isActive30 = false;
+                this.isActive45 = false;
+                this.isActive60 = false;
+            },
+            setTime15: function() {
+                this.resetTime();
+                this.isActive15 = true;
+            },
+            setTime30: function() {
+                this.resetTime();
+                this.isActive30 = true;
+            },
+            setTime45: function() {
+                this.resetTime();
+                this.isActive45 = true;
+            },
+            setTime60: function() {
+                this.resetTime();
+                this.isActive60 = true;
+            },
+            startMeeting: function() {
+                router.push("/");
+            },
+            cancel: function() {
+                router.push("/");
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    p{
+        color: #646464;
+        font-family: "Open Sans", serif;
+        font-size: 22px;
+        float: left;
+    }
+    h1{
+        color: #646464;
+        font-family: 'Rokkitt', serif;
+        font-size: 100px;
+        float: left;
+    }
+    h2, h3{
+        font-family: 'Rokkitt', serif;
+        color: #646464;
+    }
+    h4{
+        color: #646464;
+        font-family: "Open Sans", serif;
+        font-size: 50px;
+        font-weight: 300;
+    }
+
+    button{
+        color: #646464;
+        font-family: 'Rokkitt', serif;
+        font-size: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin: 20px 20px 20px 0px;
+        float: left;
+        border: solid medium #646464;
+        background: transparent;
+    }
+
+    input{
+        font-size: 22pt;
+        color: #009ddc;
+        float: left;
+        margin: 20px 20px 20px 0px;
+        width: 600px;
+        height: 40px;
+        border-bottom: solid medium #646464;
+    }
+
+    .active{
+        color: #009ddc;
+        border: solid medium #009ddc;
+    }
+
+    #digiclock{
+        color: #646464;
+        float: right;
+        font-size: 70px;
+        font-family: "Open Sans", serif;
+        font-weight: 300;
+    }
+    #titleDiv{
+        height: 100px;
+    }
+    #mainDiv{
+        background-color: #ffffff;
+        height: 100vh;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 10px;
+    }
+    #start{
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        color: #ffffff;
+        background: #009ddc;
+        border: solid medium #009ddc;
+    }
+    #cancel{
+        position: absolute;
+        bottom: 50px;
+        left: 340px;
+        color: #646464;
+        background: transparent;
+        border: solid medium #646464;
+    }
+
+
+</style>

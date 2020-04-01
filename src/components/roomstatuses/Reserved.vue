@@ -10,8 +10,8 @@
         </b-row>
         <b-row>
             <b-col>
-                <p>4th Floor</p>
-                <p>4 Persons</p>
+                <p id="floor">4th Floor</p>
+                <p id="size">4 Persons</p>
             </b-col>
         </b-row>
         <b-row>
@@ -30,13 +30,10 @@
             </b-col>
         </b-row>
         <b-row>
-            <button type="button" style="margin: 20px auto;">FIND A FREE ROOM</button>
+            <button type="button" style="margin: 20px auto;">START MEETING</button>
         </b-row>
         <b-row>
-            <button type="button">END</button>
-        </b-row>
-        <b-row>
-            <button type="button">EXTEND</button>
+            <button id="find" type="button">FIND A FREE ROOM</button>
         </b-row>
         <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
     </b-col>
@@ -84,7 +81,9 @@
         font-size: 30px;
         padding-left: 15px;
         padding-right: 15px;
-        margin-top: 20px;
+        margin: 20px 20px 20px 0px;
+        background: #ffffff;
+        border: solid medium #ffffff;
     }
     #logo{
         position: absolute;
@@ -115,6 +114,12 @@
         padding-right: 50px;
         padding-top: 10px;
     }
-
+    #find{
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        color: #ffffff;
+        background: transparent;
+    }
 
 </style>
