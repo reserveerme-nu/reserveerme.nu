@@ -16,6 +16,7 @@
     import Free from "../components/roomstatuses/Free";
     import Occupied from "../components/roomstatuses/Occupied";
     import Reserved from "../components/roomstatuses/Reserved";
+    import Service from "../api.service.js";
     export default {
         name: "Room",
         components: {
@@ -26,8 +27,15 @@
         },
         data() {
             return {
+                roomId: 1,
                 roomStatus: "occupied"
             }
+        },
+        mounted() {
+            Service.GetStatus(this.roomId).then(response => {
+                console.log(response);
+                this.roomStatus = response;
+            })
         }
     }
 </script>

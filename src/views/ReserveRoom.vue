@@ -60,10 +60,12 @@
         },
         data() {
             return {
+                roomId: 1,
                 isActive15: true,
                 isActive30: false,
                 isActive45: false,
-                isActive60: false
+                isActive60: false,
+                time: 0
             }
         },
         methods: {
@@ -76,20 +78,27 @@
             setTime15: function() {
                 this.resetTime();
                 this.isActive15 = true;
+                this.time = 15;
             },
             setTime30: function() {
                 this.resetTime();
                 this.isActive30 = true;
+                this.time = 30;
             },
             setTime45: function() {
                 this.resetTime();
                 this.isActive45 = true;
+                this.time = 45;
             },
             setTime60: function() {
                 this.resetTime();
                 this.isActive60 = true;
+                this.time = 60;
             },
             startMeeting: function() {
+
+
+
                 router.push("/");
             },
             cancel: function() {

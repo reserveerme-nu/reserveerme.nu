@@ -5,7 +5,6 @@ import "./assets/global.css"
 // START OF BOOTSTRAP
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 
-
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
