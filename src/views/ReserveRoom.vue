@@ -32,7 +32,7 @@
                 </b-row>
                 <b-row>
                     <b-col>
-                        <input>
+                        <input id="nameInputField" ref="username" placeholder="...">
                     </b-col>
                 </b-row>
                 <div>
@@ -51,6 +51,7 @@
     import Calender from '../components/Calender.vue'
     import DigitalClock from "vue-digital-clock";
     import router from "../router";
+    import Service from "../api.service.js";
 
     export default {
         name: "ReserveRoom",
@@ -96,9 +97,7 @@
                 this.time = 60;
             },
             startMeeting: function() {
-
-
-
+                Service.CreateReservation(this.roomId, this.time, this.$refs.username.value);
                 router.push("/");
             },
             cancel: function() {
