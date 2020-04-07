@@ -32,12 +32,33 @@
         <b-row>
             <button type="button" style="margin: 20px auto;">FIND A FREE ROOM</button>
         </b-row>
-
         <div>
-            <button id="end" type="button">END</button>
-            <button id="extend" type="button">EXTEND</button>
+            <button id="end-btn" type="button">END</button>
+            <button id="extend-btn" type="button" v-b-modal.modal-extend>EXTEND</button>
         </div>
-        <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
+        <div>
+            <b-modal id="modal-extend" size="lg">
+                <template v-slot:modal-header>
+                    <h5>Extend Meeting</h5>
+                </template>
+                <b-col>
+                    <b-row>
+                        <p class="modal-txt">For how long would you like to extend the meeting?</p>
+                    </b-row>
+                    <b-row>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive15 }" v-on:click="this.setTime15">15 MIN</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive30 }" v-on:click="this.setTime30">30 MIN</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive45 }" v-on:click="this.setTime45">45 MIN</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive60 }" v-on:click="this.setTime60">1 HOUR</button>
+                    </b-row>
+                </b-col>
+                <template v-slot:modal-footer="{ ok, cancel }">
+                    <button id="confirm-btn" @click="ok()">CONFIRM</button>
+                    <button class="modal-btn" @click="cancel()">CANCEL</button>
+                </template>
+            </b-modal>
+        </div>
+        <img src="../../assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
     </b-col>
 </template>
 
@@ -47,7 +68,39 @@
     export default {
         name: "Occupied",
         components: {
-            DigitalClock
+            DigitalClock,
+        },
+        data() {
+            return {
+                isActive15: true,
+                isActive30: false,
+                isActive45: false,
+                isActive60: false
+            }
+        },
+        methods: {
+            resetTime: function() {
+                this.isActive15 = false;
+                this.isActive30 = false;
+                this.isActive45 = false;
+                this.isActive60 = false;
+            },
+            setTime15: function() {
+                this.resetTime();
+                this.isActive15 = true;
+            },
+            setTime30: function() {
+                this.resetTime();
+                this.isActive30 = true;
+            },
+            setTime45: function() {
+                this.resetTime();
+                this.isActive45 = true;
+            },
+            setTime60: function() {
+                this.resetTime();
+                this.isActive60 = true;
+            }
         }
     }
 </script>
@@ -75,6 +128,12 @@
         font-family: "Open Sans", serif;
         font-size: 50px;
         font-weight: 300;
+    }
+    h5{
+        color: #646464;
+        font-family: 'Rokkitt', serif;
+        font-size: 50px;
+        float: left;
     }
 
     button{
@@ -116,20 +175,45 @@
         padding-right: 50px;
         padding-top: 10px;
     }
-
-
-    #extend{
+    #extend-btn{
         position: absolute;
         bottom: 50px;
         left: 50px;
         color: #ffffff;
         background: transparent;
     }
-    #end {
+    #end-btn {
         position: absolute;
         bottom: 110px;
         left: 50px;
         color: #ffffff;
         background: transparent;
+    }
+    #confirm-btn{
+        color: #ffffff;
+        background: #009ddc;
+        border: solid medium #009ddc;
+        float: left;
+    }
+    .modal-txt{
+         color: #646464;
+         font-family: "Open Sans", serif;
+         font-size: 22px;
+         float: left;
+     }
+    .modal-btn {
+        color: #646464;
+        font-family: 'Rokkitt', serif;
+        font-size: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin: 20px 20px 20px 0px;
+        float: left;
+        border: solid medium #646464;
+        background: transparent;
+    }
+    .active{
+        color: #009ddc;
+        border: solid medium #009ddc;
     }
 </style>

@@ -26,7 +26,7 @@
         },
         data() {
             return {
-                roomStatus: "free"
+                roomStatus: "occupied"
             }
         }
     }

@@ -63,7 +63,7 @@
                 isActive15: true,
                 isActive30: false,
                 isActive45: false,
-                isActive60: false,
+                isActive60: false
             }
         },
         methods: {
