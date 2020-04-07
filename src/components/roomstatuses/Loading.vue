@@ -19,6 +19,11 @@
                 <h2 id="status">LOADING</h2>
             </b-col>
         </b-row>
+        <b-row>
+            <b-col>
+                <H4>Please wait</H4>
+            </b-col>
+        </b-row>
 
         <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
     </b-col>
@@ -67,7 +72,7 @@
         float: right;
     }
     #digiclock{
-        color: white;
+        color: #646464;
         float: right;
         font-size: 70px;
         font-family: "Open Sans", serif;

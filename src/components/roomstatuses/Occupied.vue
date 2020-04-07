@@ -33,7 +33,7 @@
             <button type="button" style="margin: 20px auto;">FIND A FREE ROOM</button>
         </b-row>
         <div>
-            <button id="end-btn" type="button">END</button>
+            <button id="end-btn" type="button" v-on:click="this.endMeeting">END</button>
             <button id="extend-btn" type="button" v-b-modal.modal-extend>EXTEND</button>
         </div>
         <div>
@@ -64,6 +64,7 @@
 
 <script>
     import DigitalClock from "vue-digital-clock";
+    import Service from "../../api.service.js";
 
     export default {
         name: "Occupied",
@@ -72,6 +73,7 @@
         },
         data() {
             return {
+                roomId: 1,
                 isActive15: true,
                 isActive30: false,
                 isActive45: false,
@@ -100,6 +102,12 @@
             setTime60: function() {
                 this.resetTime();
                 this.isActive60 = true;
+            },
+            endMeeting: function() {
+                Service.EndMeeting(this.roomId).then(response => {
+                    console.log(response);
+                    this.$router.go(0);
+                })
             }
         }
     }

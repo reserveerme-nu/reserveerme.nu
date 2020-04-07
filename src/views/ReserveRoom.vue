@@ -66,7 +66,8 @@
                 isActive30: false,
                 isActive45: false,
                 isActive60: false,
-                time: 0
+                time: 15,
+                userId: 1
             }
         },
         methods: {
@@ -97,8 +98,10 @@
                 this.time = 60;
             },
             startMeeting: function() {
-                Service.CreateReservation(this.roomId, this.time, this.$refs.username.value);
-                router.push("/");
+                Service.CreateReservation(this.roomId, this.time, this.userId).then(response => {
+                        console.log(response);
+                        router.push("/");
+                })
             },
             cancel: function() {
                 router.push("/");

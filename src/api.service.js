@@ -8,5 +8,8 @@ export default class ApiService {
   }
   static async CreateReservation(roomId, duration, issuer) {
     return axios.post(`https://localhost:44384/reservations/add`, { RoomId: roomId, Duration: duration, Issuer: issuer });
-  }    
+  }
+    static async EndMeeting(roomId) {
+        return axios.post(`https://localhost:44384/reservations/remove`, { RoomId: roomId });
+    }
 }
