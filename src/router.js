@@ -18,7 +18,7 @@ const router = new Router({
         {
             path: '/reserve',
             name: 'ReserveRoom',
-            component: ReserveRoom,
+            component: ReserveRoom
         },
     ]
 })

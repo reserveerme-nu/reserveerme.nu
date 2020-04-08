@@ -2,7 +2,7 @@
     <b-col cols="9" id="mainDiv">
         <b-row id="titleDiv">
             <b-col cols="10">
-                <h1>Asimov</h1>
+                <h1>{{roomInfo.roomName}}</h1>
             </b-col>
             <b-col cols="2">
                 <digital-clock id="digiclock"></digital-clock>
@@ -10,8 +10,8 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">4th Floor</p>
-                <p id="size">4 Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
+                <p id="size">{{roomInfo.roomSize}} Persons</p>
             </b-col>
         </b-row>
         <b-row>
@@ -21,12 +21,12 @@
         </b-row>
         <b-row>
             <b-col>
-                <H4>by Xander Steinmann</H4>
+                <H4>by {{roomReservedBy}}</H4>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>until 14:45</H4>
+                <H4>until {{roomReservedTill}}</H4>
             </b-col>
         </b-row>
         <b-row>
@@ -67,13 +67,16 @@
     import Service from "../../api.service.js";
 
     export default {
+        props:['roomInfo'],
         name: "Occupied",
         components: {
             DigitalClock,
         },
         data() {
             return {
-                roomId: 1,
+                roomReservedBy: "Unknown",
+                roomReservedTill: "Unknown",
+
                 isActive15: true,
                 isActive30: false,
                 isActive45: false,
@@ -104,7 +107,7 @@
                 this.isActive60 = true;
             },
             endMeeting: function() {
-                Service.EndMeeting(this.roomId).then(response => {
+                Service.EndMeeting(this.roomInfo.roomId).then(response => {
                     console.log(response);
                     this.$router.go(0);
                 })
@@ -211,11 +214,6 @@
      }
     .modal-btn {
         color: #646464;
-        font-family: 'Rokkitt', serif;
-        font-size: 30px;
-        padding-left: 15px;
-        padding-right: 15px;
-        margin: 20px 20px 20px 0px;
         float: left;
         border: solid medium #646464;
         background: transparent;

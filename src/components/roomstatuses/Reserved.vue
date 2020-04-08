@@ -2,7 +2,7 @@
     <b-col cols="9" id="mainDiv">
         <b-row id="titleDiv">
             <b-col cols="10">
-                <h1>Asimov</h1>
+                <h1>{{roomInfo.roomName}}</h1>
             </b-col>
             <b-col cols="2">
                 <digital-clock id="digiclock"></digital-clock>
@@ -10,8 +10,8 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">4th Floor</p>
-                <p id="size">4 Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
+                <p id="size">{{roomInfo.roomSize}} Persons</p>
             </b-col>
         </b-row>
         <b-row>
@@ -21,12 +21,12 @@
         </b-row>
         <b-row>
             <b-col>
-                <H4>by Xander Steinmann</H4>
+                <H4>by {{roomReservedBy}}</H4>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>until 14:45</H4>
+                <H4>until {{roomReservedTill}}</H4>
             </b-col>
         </b-row>
         <b-row>
@@ -43,9 +43,16 @@
     import DigitalClock from "vue-digital-clock";
 
     export default {
+        props:['roomInfo'],
         name: "Reserved",
         components: {
             DigitalClock
+        },
+        data() {
+            return {
+                roomReservedBy: "Unknown",
+                roomReservedTill: "Unknown"
+            }
         }
     }
 </script>

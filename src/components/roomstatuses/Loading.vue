@@ -2,7 +2,7 @@
     <b-col cols="9" id="mainDiv">
         <b-row id="titleDiv">
             <b-col cols="10">
-                <h1>Asimov</h1>
+                <h1>{{roomInfo.roomName}}</h1>
             </b-col>
             <b-col cols="2">
                 <digital-clock id="digiclock"></digital-clock>
@@ -10,8 +10,8 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">4th Floor</p>
-                <p id="size">4 Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
+                <p id="size">{{roomInfo.roomSize}} Persons</p>
             </b-col>
         </b-row>
         <b-row>
@@ -25,7 +25,7 @@
             </b-col>
         </b-row>
 
-        <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
+        <img src="../../assets/loading.gif" height="100" width="100"  alt="Fontys Logo" id="logo"/>
     </b-col>
 </template>
 
@@ -33,9 +33,15 @@
     import DigitalClock from "vue-digital-clock";
 
     export default {
+        props:['roomInfo'],
         name: "Loading",
         components: {
             DigitalClock
+        },
+        data() {
+            return{
+
+            }
         }
     }
 </script>

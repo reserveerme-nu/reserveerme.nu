@@ -1,10 +1,10 @@
 <template>
-    <b-container fluid>
+    <b-container fluid >
         <b-row>
-            <loading v-if="this.roomStatus === 'loading'"></loading>
-            <occupied v-else-if="this.roomStatus === 'occupied'"></occupied>
-            <free v-else-if="this.roomStatus === 'free'"></free>
-            <reserved v-else-if="this.roomStatus === 'reserved'"></reserved>
+            <loading v-if="this.roomInfo.roomStatus === 'loading'" v-bind:roomInfo="roomInfo"></loading>
+            <occupied v-else-if="this.roomInfo.roomStatus === 'occupied'" v-bind:roomInfo="roomInfo"></occupied>
+            <free v-else-if="this.roomInfo.roomStatus === 'free'" v-bind:roomInfo="roomInfo"></free>
+            <reserved v-else-if="this.roomInfo.roomStatus === 'reserved'" v-bind:roomInfo="roomInfo"></reserved>
             <b-col cols="3" id="calenderDiv">
                 <calender></calender>
             </b-col>
@@ -20,6 +20,7 @@
     import Reserved from "../components/roomstatuses/Reserved";
     import Service from "../api.service.js";
     export default {
+        props:['roomInfo'],
         name: "Room",
         components: {
             Loading,
@@ -30,14 +31,13 @@
         },
         data() {
             return {
-                roomId: 1,
-                roomStatus: "loading"
+
             }
         },
-        mounted() {
-            Service.GetStatus(this.roomId).then(response => {
+        created() {
+            Service.GetStatus(this.roomInfo.roomId).then(response => {
                 console.log(response);
-                this.roomStatus = response.data;
+                this.roomInfo.roomStatus = response.data;
             })
         }
     }

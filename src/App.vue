@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view v-bind:roomInfo="roomInfo"></router-view>
   </div>
 </template>
 
@@ -9,6 +9,17 @@ export default {
   name: 'App',
   components: {
   },
+  data() {
+    return {
+      roomInfo: {
+        roomId: 1,
+        roomName: "Asimov",
+        roomFloor: "4th",
+        roomSize: 4,
+        roomStatus: 'loading'
+      }
+    }
+  }
 }
 </script>
 

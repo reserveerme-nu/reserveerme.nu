@@ -4,7 +4,7 @@
             <b-col cols="9" id="mainDiv">
                 <b-row id="titleDiv">
                     <b-col cols="10">
-                        <h1>Reserve Asimov</h1>
+                        <h1>Reserve {{roomInfo.roomName}}</h1>
                     </b-col>
                     <b-col cols="2">
                         <digital-clock id="digiclock"></digital-clock>
@@ -54,6 +54,7 @@
     import Service from "../api.service.js";
 
     export default {
+        props:['roomInfo'],
         name: "ReserveRoom",
         components: {
             DigitalClock,
@@ -61,7 +62,6 @@
         },
         data() {
             return {
-                roomId: 1,
                 isActive15: true,
                 isActive30: false,
                 isActive45: false,
@@ -98,7 +98,7 @@
                 this.time = 60;
             },
             startMeeting: function() {
-                Service.CreateReservation(this.roomId, this.time, this.userId).then(response => {
+                Service.CreateReservation(this.roomInfo.roomId, this.time, this.userId).then(response => {
                         console.log(response);
                         router.push("/");
                 })
