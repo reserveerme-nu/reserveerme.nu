@@ -4,7 +4,7 @@
             <b-col cols="9" id="mainDiv">
                 <b-row id="titleDiv">
                     <b-col cols="10">
-                        <h1>Reserve Asimov</h1>
+                        <h1>Reserve</h1>
                     </b-col>
                     <b-col cols="2">
                         <digital-clock id="digiclock"></digital-clock>
