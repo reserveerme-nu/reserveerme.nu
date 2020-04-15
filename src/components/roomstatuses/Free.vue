@@ -10,33 +10,34 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
-                <p id="size">{{roomInfo.roomSize}} Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} {{ $t('room.floor') }}</p>
+                <p id="size">{{roomInfo.roomSize}} {{ $tc('room.persons', roomInfo.roomSize) }}</p>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <h2 id="status">FREE</h2>
+                <h2 id="status">{{ $t('free.status') }}</h2>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>{{roomFreeTill}}</H4>
+                <H4>{{ $tc('free.until', roomFreeTill.length) }} {{roomFreeTill}}</H4>
             </b-col>
         </b-row>
         <b-row>
-            <button type="button" v-on:click="this.reserveRoom" style="margin: 20px auto;">USE MEETING ROOM</button>
+            <button type="button" v-on:click="this.reserveRoom" style="margin: 20px auto;">{{ $t('free.use') }}</button>
         </b-row>
 
         <div>
-            <button id="more" type="button">FIND MORE FREE ROOMS</button>
+            <button id="more" type="button">{{ $t('free.find') }}</button>
         </div>
 
-        <img src="../../assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
+        <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
     </b-col>
 </template>
 
 <script>
+    import i18n from '@/plugins/i18n';
     import DigitalClock from "vue-digital-clock";
     import router from "../../router";
 
@@ -48,10 +49,13 @@
         },
         data() {
             return {
-                roomFreeTill: "For the rest of the day"
+                roomFreeTill: ''
             }
         },
         methods: {
+            changeLocale(locale) {
+                i18n.locale = locale;
+            },
             reserveRoom: function() {
                 router.push("/reserve");
             }

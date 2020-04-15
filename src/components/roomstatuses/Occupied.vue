@@ -10,61 +10,61 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
-                <p id="size">{{roomInfo.roomSize}} Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} {{ $t('room.floor') }}</p>
+                <p id="size">{{roomInfo.roomSize}} {{ $tc('room.persons', roomInfo.roomSize) }}</p>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <h2 id="status">OCCUPIED</h2>
+                <h2 id="status">{{ $t('occupied.status') }}</h2>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>by {{roomReservedBy}}</H4>
+                <H4>{{ $t('occupied.by') }} {{roomReservedBy}}</H4>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>until {{roomReservedTill}}</H4>
+                <H4>{{ $t('occupied.until') }} {{roomReservedTill}}</H4>
             </b-col>
         </b-row>
         <b-row>
-            <button type="button" style="margin: 20px auto;">FIND A FREE ROOM</button>
+            <button type="button" style="margin: 20px auto;">{{ $t('occupied.find') }}</button>
         </b-row>
         <div>
-            <button id="end-btn" type="button" v-on:click="this.endMeeting">END</button>
-            <button id="extend-btn" type="button" v-b-modal.modal-extend>EXTEND</button>
+            <button id="end-btn" type="button" v-on:click="this.endMeeting">{{ $t('occupied.end') }}</button>
+            <button id="extend-btn" type="button" v-b-modal.modal-extend>{{ $t('occupied.extend') }}</button>
         </div>
         <div>
             <b-modal id="modal-extend" size="lg">
                 <template v-slot:modal-header>
-                    <h5>Extend Meeting</h5>
+                    <h5>{{ $t('extend.title') }}</h5>
                 </template>
                 <b-col>
                     <b-row>
-                        <p class="modal-txt">For how long would you like to extend the meeting?</p>
+                        <p class="modal-txt">{{ $t('extend.question') }}</p>
                     </b-row>
                     <b-row>
-                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive15 }" v-on:click="this.setTime15">15 MIN</button>
-                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive30 }" v-on:click="this.setTime30">30 MIN</button>
-                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive45 }" v-on:click="this.setTime45">45 MIN</button>
-                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive60 }" v-on:click="this.setTime60">1 HOUR</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive15 }" v-on:click="this.setTime15">15 {{ $t('time.min') }}</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive30 }" v-on:click="this.setTime30">30 {{ $t('time.min') }}</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive45 }" v-on:click="this.setTime45">45 {{ $t('time.min') }}</button>
+                        <button type="button" class="modal-btn" v-bind:class="{ active: isActive60 }" v-on:click="this.setTime60">1 {{ $t('time.hour') }}</button>
                     </b-row>
                 </b-col>
                 <template v-slot:modal-footer="{ ok, cancel }">
-                    <button id="confirm-btn" @click="ok()">CONFIRM</button>
-                    <button class="modal-btn" @click="cancel()">CANCEL</button>
+                    <button id="confirm-btn" @click="ok()">{{ $t('extend.confirm') }}</button>
+                    <button class="modal-btn" @click="cancel()">{{ $t('extend.cancel') }}</button>
                 </template>
             </b-modal>
         </div>
-        <img src="../../assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
+        <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
     </b-col>
 </template>
 
 <script>
     import DigitalClock from "vue-digital-clock";
-    import Service from "../../api.service.js";
+    import Service from "@/api.service.js";
 
     export default {
         props:['roomInfo'],

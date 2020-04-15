@@ -4,7 +4,7 @@
             <b-col cols="9" id="mainDiv">
                 <b-row id="titleDiv">
                     <b-col cols="10">
-                        <h1>Reserve {{roomInfo.roomName}}</h1>
+                        <h1>{{ $t('reserve.title') }} {{roomInfo.roomName}}</h1>
                     </b-col>
                     <b-col cols="2">
                         <digital-clock id="digiclock"></digital-clock>
@@ -13,21 +13,21 @@
                 <b-row>
                     <b-col>
                         <br><br><br>
-                        <p>How long is the meeting going to be?</p>
+                        <p>{{ $t('reserve.question') }}</p>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
-                        <button type="button" v-bind:class="{ active: isActive15 }" v-on:click="this.setTime15">15 MIN</button>
-                        <button type="button" v-bind:class="{ active: isActive30 }" v-on:click="this.setTime30">30 MIN</button>
-                        <button type="button" v-bind:class="{ active: isActive45 }" v-on:click="this.setTime45">45 MIN</button>
-                        <button type="button" v-bind:class="{ active: isActive60 }" v-on:click="this.setTime60">1 HOUR</button>
+                        <button type="button" v-bind:class="{ active: isActive15 }" v-on:click="this.setTime15">15 {{ $t('time.min') }}</button>
+                        <button type="button" v-bind:class="{ active: isActive30 }" v-on:click="this.setTime30">30 {{ $t('time.min') }}</button>
+                        <button type="button" v-bind:class="{ active: isActive45 }" v-on:click="this.setTime45">45 {{ $t('time.min') }}</button>
+                        <button type="button" v-bind:class="{ active: isActive60 }" v-on:click="this.setTime60">1 {{ $t('time.hour') }}</button>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
                         <br><br><br>
-                        <p>Who are you?</p>
+                        <p>{{ $t('reserve.who') }}</p>
                     </b-col>
                 </b-row>
                 <b-row>
@@ -35,15 +35,22 @@
                         <input id="nameInputField" ref="username" placeholder="...">
                     </b-col>
                 </b-row>
-                <div>
-                    <button id="start" type="button" v-on:click="this.startMeeting">START MEETING</button>
-                    <button id="cancel" type="button" v-on:click="this.cancel">CANCEL</button>
+                <div id="options">
+                    <button id="start" type="button" v-on:click="this.startMeeting">{{ $t('reserve.start') }}</button>
+                    <button id="cancel" type="button" v-on:click="this.cancel">{{ $t('reserve.cancel') }}</button>
                 </div>
             </b-col>
             <b-col cols="3" id="calenderDiv">
                 <calender></calender>
             </b-col>
         </b-row>
+        <div class="locale-changer">
+            <flag v-if="$i18n.locale === 'en'" :iso="'us'" v-bind:squared=false />
+            <flag v-else-if="$i18n.locale === 'nl'" :iso="'nl'" v-bind:squared=false />
+            <select v-model="$i18n.locale">
+                <option v-for="(lang, i) in $i18n.availableLocales" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+            </select>
+        </div>
     </b-container>
 </template>
 
@@ -178,22 +185,20 @@
         padding-right: 50px;
         padding-top: 10px;
     }
-    #start{
+    #options{
         position: absolute;
         bottom: 50px;
         left: 50px;
+    }
+    #start{
         color: #ffffff;
         background: #009ddc;
         border: solid medium #009ddc;
     }
-    #cancel{
+    .locale-changer{
         position: absolute;
-        bottom: 50px;
-        left: 340px;
-        color: #646464;
-        background: transparent;
-        border: solid medium #646464;
+        bottom: 10px;
+        right: 10px;
     }
-
 
 </style>

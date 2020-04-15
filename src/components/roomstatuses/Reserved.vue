@@ -10,30 +10,30 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
-                <p id="size">{{roomInfo.roomSize}} Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} {{ $t('room.floor') }}</p>
+                <p id="size">{{roomInfo.roomSize}} {{ $tc('room.persons', roomInfo.roomSize) }}</p>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <h2 id="status">RESERVED</h2>
+                <h2 id="status">{{ $t('reserved.status') }}</h2>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>by {{roomReservedBy}}</H4>
+                <H4>{{ $t('reserved.by') }} {{roomReservedBy}}</H4>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>until {{roomReservedTill}}</H4>
+                <H4>{{ $t('reserved.until') }} {{roomReservedTill}}</H4>
             </b-col>
         </b-row>
         <b-row>
-            <button type="button" style="margin: 20px auto;">START MEETING</button>
+            <button type="button" style="margin: 20px auto;">{{ $t('reserved.start') }}</button>
         </b-row>
         <b-row>
-            <button id="find" type="button">FIND A FREE ROOM</button>
+            <button id="find" type="button">{{ $t('reserved.find') }}</button>
         </b-row>
         <img src="@/assets/Fontys-Logo.png" height="100" width="160"  alt="Fontys Logo" id="logo"/>
     </b-col>

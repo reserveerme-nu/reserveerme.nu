@@ -1,0 +1,56 @@
+{
+  "room": {
+    "floor": "Floor",
+    "persons": "Person | Persons"
+  },
+
+  "loading": {
+    "status": "LOADING",
+    "wait": "Please wait"
+  },
+
+  "free": {
+    "status": "FREE",
+    "use": "USE MEETING ROOM",
+    "find": "FIND MORE FREE ROOMS",
+    "until": "For the rest of the day | until | until"
+  },
+
+  "reserved": {
+    "status": "RESERVED",
+    "start": "START MEETING",
+    "find": "FIND A FREE ROOM",
+    "by": "by",
+    "until": "until"
+  },
+
+  "occupied": {
+    "status": "OCCUPIED",
+    "find": "@:reserved.find",
+    "end": "END",
+    "extend": "EXTEND",
+    "by": "@:reserved.by",
+    "until": "@:reserved.until"
+  },
+
+  "extend": {
+    "title": "Extend Meeting",
+    "question": "For how long would you like to extend the meeting?",
+    "confirm": "CONFIRM",
+    "cancel": "CANCEL"
+  },
+
+  "reserve": {
+    "title": "Reserve",
+    "question": "How long is the meeting going to be?",
+    "who": "Who are you?",
+    "start": "@:reserved.start",
+    "cancel": "@:extend.cancel"
+  },
+
+  "time": {
+    "min": "MIN",
+    "hour": "HOUR"
+  }
+
+}

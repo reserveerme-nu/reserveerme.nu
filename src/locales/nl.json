@@ -1,0 +1,56 @@
+{
+  "room": {
+    "floor": "Verdieping",
+    "persons": "Persoon | Personen"
+  },
+
+  "loading": {
+    "status": "LADEN",
+    "wait": "Moment geduld AUB"
+  },
+
+  "free": {
+    "status": "VRIJ",
+    "use": "GEBRUIK DE VERGADER RUIMTE",
+    "find": "VIND MEER VRIJE RUIMTES",
+    "until": "Voor de rest van de dag | tot | tot"
+  },
+
+  "reserved": {
+    "status": "GERESERVEERD",
+    "start": "START VERGADERING",
+    "find": "VIND EEN VRIJE RUIMTE",
+    "by": "door",
+    "until": "tot"
+  },
+
+  "occupied": {
+    "status": "BEZET",
+    "find": "@:reserved.find",
+    "end": "EINDE",
+    "extend": "VERLENG",
+    "by": "@:reserved.by",
+    "until": "@:reserved.until"
+  },
+
+  "extend": {
+    "title": "Verleng vergadering",
+    "question": "Voor hoe lang zou je de vergadering willen verlengen?",
+    "confirm": "BEVESTIG",
+    "cancel": "ANNULEER"
+  },
+
+  "reserve": {
+    "title": "Reserveer",
+    "question": "Hoe lang gaat de vergadering duren?",
+    "who": "Wie ben je?",
+    "start": "@:reserved.start",
+    "cancel": "@:extend.cancel"
+  },
+
+  "time": {
+    "min": "MIN",
+    "hour": "UUR"
+  }
+
+}

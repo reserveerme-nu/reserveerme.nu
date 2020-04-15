@@ -16,7 +16,7 @@ export default {
         roomName: "Asimov",
         roomFloor: "4th",
         roomSize: 4,
-        roomStatus: 'loading'
+        roomStatus: 'free'
       }
     }
   }

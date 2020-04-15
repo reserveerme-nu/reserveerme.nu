@@ -10,22 +10,22 @@
         </b-row>
         <b-row>
             <b-col>
-                <p id="floor">{{roomInfo.roomFloor}} Floor</p>
-                <p id="size">{{roomInfo.roomSize}} Persons</p>
+                <p id="floor">{{roomInfo.roomFloor}} {{ $t('room.floor') }}</p>
+                <p id="size">{{roomInfo.roomSize}} {{ $tc('room.persons', roomInfo.roomSize) }}</p>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <h2 id="status">LOADING</h2>
+                <h2 id="status">{{ $t('loading.status') }}</h2>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>Please wait</H4>
+                <H4>{{ $t('loading.wait') }}</H4>
             </b-col>
         </b-row>
 
-        <img src="../../assets/loading.gif" height="100" width="100"  alt="Fontys Logo" id="logo"/>
+        <img src="@/assets/loading.gif" height="100" width="100"  alt="Fontys Logo" id="logo"/>
     </b-col>
 </template>
 

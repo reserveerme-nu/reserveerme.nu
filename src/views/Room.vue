@@ -9,6 +9,13 @@
                 <calender></calender>
             </b-col>
         </b-row>
+        <div class="locale-changer">
+            <flag v-if="$i18n.locale === 'en'" :iso="'us'" v-bind:squared=false />
+            <flag v-else-if="$i18n.locale === 'nl'" :iso="'nl'" v-bind:squared=false />
+            <select v-model="$i18n.locale">
+                <option v-for="(lang, i) in $i18n.availableLocales" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+            </select>
+        </div>
     </b-container>
 </template>
 
@@ -44,6 +51,9 @@
 </script>
 
 <style scoped>
-
-
+    .locale-changer{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
 </style>
