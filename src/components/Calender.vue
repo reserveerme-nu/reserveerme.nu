@@ -52,12 +52,13 @@
             loadEvents() {
                 const events = [];
                 Service.GetSchedule(1).then(response => {
-                    console.log(response)
-                    events.push({
-                        id: events.length + 1,
-                        start: new DayPilot.Date(response.data[0].start).addHours(2),
-                        end: new DayPilot.Date(response.data[0].end).addHours(2),
-                        text: response.data[0].subject
+                    response.data.forEach(object =>{
+                        events.push({
+                            id: events.length + 1,
+                            start: new DayPilot.Date(object.start).addHours(2),
+                            end: new DayPilot.Date(object.end).addHours(2),
+                            text: object.subject,
+                        })
                     })
                 });
 
