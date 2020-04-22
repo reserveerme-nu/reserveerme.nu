@@ -4,7 +4,7 @@
             <loading v-if="this.roomInfo.roomStatus === 'loading'" v-bind:roomInfo="roomInfo"></loading>
             <free v-else-if="this.roomInfo.roomStatus === 0" v-bind:roomInfo="roomInfo"></free>
             <reserved v-else-if="this.roomInfo.roomStatus === 1" v-bind:roomInfo="roomInfo" v-bind:reservation="reservation"></reserved>
-            <occupied v-else-if="this.roomInfo.roomStatus === 2" v-bind:roomInfo="roomInfo"></occupied>
+            <occupied v-else-if="this.roomInfo.roomStatus === 2" v-bind:roomInfo="roomInfo" v-bind:reservation="reservation"></occupied>
             <b-col cols="3" id="calenderDiv">
                 <calender></calender>
             </b-col>

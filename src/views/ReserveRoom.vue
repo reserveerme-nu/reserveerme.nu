@@ -36,7 +36,7 @@
                     </b-col>
                 </b-row>
                 <div id="options">
-                    <button id="start" type="button" v-on:click="this.startMeeting">{{ $t('reserve.start') }}</button>
+                    <button id="start" type="button" v-on:click="this.makeReservation">{{ $t('reserve.start') }}</button>
                     <button id="cancel" type="button" v-on:click="this.cancel">{{ $t('reserve.cancel') }}</button>
                 </div>
             </b-col>
@@ -105,7 +105,7 @@
                 this.isActive60 = true;
                 this.time = 60;
             },
-            startMeeting: function() {
+            makeReservation: function() {
                 Service.CreateReservation(this.roomInfo.roomId, this.time, this.issuer).then(response => {
                         console.log(response);
                         router.push("/");
