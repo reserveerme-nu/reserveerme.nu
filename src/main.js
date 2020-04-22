@@ -6,6 +6,9 @@ import router from './router'
 import i18n from './plugins/i18n'
 import FlagIcon from 'vue-flag-icon';
 
+
+Vue.use(require('vue-moment'));
+
 Vue.use(FlagIcon);
 
 // END OF i18n
