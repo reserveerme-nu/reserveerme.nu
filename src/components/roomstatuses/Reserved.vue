@@ -21,12 +21,12 @@
         </b-row>
         <b-row>
             <b-col>
-                <H4>{{ $t('reserved.by') }} {{roomReservedBy}}</H4>
+                <H4>{{ $t('reserved.by') }} {{reservation.issuer}}</H4>
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <H4>{{ $t('reserved.until') }} {{roomReservedTill}}</H4>
+                <H4>{{ $t('reserved.until') }} {{reservation.dateEnd | moment("hh:mm")}}</H4>
             </b-col>
         </b-row>
         <b-row>
@@ -43,7 +43,7 @@
     import DigitalClock from "vue-digital-clock";
 
     export default {
-        props:['roomInfo'],
+        props:['roomInfo', 'reservation'],
         name: "Reserved",
         components: {
             DigitalClock

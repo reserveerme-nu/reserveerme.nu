@@ -2,9 +2,9 @@
     <b-container fluid >
         <b-row>
             <loading v-if="this.roomInfo.roomStatus === 'loading'" v-bind:roomInfo="roomInfo"></loading>
-            <occupied v-else-if="this.roomInfo.roomStatus === 'occupied'" v-bind:roomInfo="roomInfo"></occupied>
-            <free v-else-if="this.roomInfo.roomStatus === 'free'" v-bind:roomInfo="roomInfo"></free>
-            <reserved v-else-if="this.roomInfo.roomStatus === 'reserved'" v-bind:roomInfo="roomInfo"></reserved>
+            <free v-else-if="this.roomInfo.roomStatus === 0" v-bind:roomInfo="roomInfo"></free>
+            <reserved v-else-if="this.roomInfo.roomStatus === 1" v-bind:roomInfo="roomInfo" v-bind:reservation="reservation"></reserved>
+            <occupied v-else-if="this.roomInfo.roomStatus === 2" v-bind:roomInfo="roomInfo"></occupied>
             <b-col cols="3" id="calenderDiv">
                 <calender></calender>
             </b-col>
@@ -38,13 +38,18 @@
         },
         data() {
             return {
-
+                reservation: {
+                    issuer: '',
+                    dateEnd: ''
+                }
             }
         },
         created() {
             Service.GetStatus(this.roomInfo.roomId).then(response => {
                 console.log(response);
-                this.roomInfo.roomStatus = response.data;
+                this.roomInfo.roomStatus = response.data.statusType;
+                this.reservation = response.data.reservation;
+                console.log(this.reservation)
             })
         }
     }

@@ -32,7 +32,7 @@
                 </b-row>
                 <b-row>
                     <b-col>
-                        <input id="nameInputField" ref="username" placeholder="...">
+                        <input v-model="issuer" id="nameInputField" ref="username" placeholder="...">
                     </b-col>
                 </b-row>
                 <div id="options">
@@ -74,7 +74,8 @@
                 isActive45: false,
                 isActive60: false,
                 time: 15,
-                userId: 1
+                userId: 1,
+                issuer: ""
             }
         },
         methods: {
@@ -105,7 +106,7 @@
                 this.time = 60;
             },
             startMeeting: function() {
-                Service.CreateReservation(this.roomInfo.roomId, this.time, this.userId).then(response => {
+                Service.CreateReservation(this.roomInfo.roomId, this.time, this.issuer).then(response => {
                         console.log(response);
                         router.push("/");
                 })
