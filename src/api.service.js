@@ -3,11 +3,11 @@ import axios from "axios";
 export default class ApiService {
     static async GetStatus(roomId) {
         return axios.get(
-            `https://localhost:44384/reservations/status/${roomId}`
+            `https://localhost:5001/reservations/status/${roomId}`
         );
     }
     static async CreateReservation(roomId, dateStart, duration, issuer) {
-        return axios.post(`https://localhost:44384/reservations/add`, {
+        return axios.post(`https://localhost:5001/reservations/add`, {
             RoomId: roomId,
             DateStart: dateStart,
             Duration: duration,
@@ -15,20 +15,24 @@ export default class ApiService {
         });
     }
     static async CreateDirectReservation(roomId, duration, issuer) {
-        return axios.post(`https://localhost:44384/reservations`, {
+        return axios.post(`https://localhost:5001/reservations`, {
             RoomId: roomId,
             Duration: duration,
             Issuer: issuer
         });
     }
     static async StartMeeting(roomId) {
-        return axios.post(`https://localhost:44384/reservations/start`, {
+        return axios.post(`https://localhost:5001/reservations/start`, {
             RoomId: roomId
         });
     }
     static async EndMeeting(roomId) {
-        return axios.post(`https://localhost:44384/reservations/remove`, {
+        return axios.post(`https://localhost:5001/reservations/remove`, {
             RoomId: roomId,
         });
+    }
+    static async GetSchedule(roomId) {
+        console.log(roomId);
+        return axios.get("https://localhost:5001/reservations/calendar");
     }
 }

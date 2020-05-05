@@ -61,4 +61,9 @@
         bottom: 10px;
         right: 10px;
     }
+    #calenderDiv {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+    }
 </style>
