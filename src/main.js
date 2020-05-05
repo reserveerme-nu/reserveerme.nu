@@ -13,6 +13,15 @@ Vue.use(FlagIcon);
 
 // END OF i18n
 
+// START OF DATETIME
+import { Datetime } from 'vue-datetime'
+// You need a specific loader for CSS files
+import 'vue-datetime/dist/vue-datetime.css'
+
+Vue.use(Datetime)
+
+//END OF DATETIME
+
 // START OF BOOTSTRAP
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 

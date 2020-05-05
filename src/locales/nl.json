@@ -35,15 +35,19 @@
 
   "extend": {
     "title": "Verleng vergadering",
-    "question": "Voor hoe lang zou je de vergadering willen verlengen?",
+    "duration": "Voor hoe lang zou je de vergadering willen verlengen?",
     "confirm": "BEVESTIG",
     "cancel": "ANNULEER"
   },
 
   "reserve": {
     "title": "Reserveer",
-    "question": "Hoe lang gaat de vergadering duren?",
+    "when": "Voor wanneer zou je de kamer willen reserveren?",
+    "direct": "NU",
+    "future": "TOEKOMST",
+    "duration": "Hoe lang gaat de vergadering duren?",
     "who": "Wie ben je?",
+    "reserve": "RESERVEER",
     "start": "@:reserved.start",
     "cancel": "@:extend.cancel"
   },

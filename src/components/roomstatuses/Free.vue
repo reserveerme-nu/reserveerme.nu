@@ -32,39 +32,38 @@
       >{{ $t('free.use') }}</button>
     </b-row>
 
-    <div>
-      <button id="more" type="button">{{ $t('free.find') }}</button>
-    </div>
+        <div>
+            <button id="more" type="button" v-on:click="this.freeRooms">{{ $t('free.find') }}</button>
+        </div>
 
     <img src="@/assets/Fontys-Logo.png" height="100" width="160" alt="Fontys Logo" id="logo" />
   </b-col>
 </template>
 
 <script>
-import i18n from "@/plugins/i18n";
-import DigitalClock from "vue-digital-clock";
-import router from "../../router";
+    import DigitalClock from "vue-digital-clock";
+    import router from "../../router";
 
-export default {
-  props: ["roomInfo"],
-  name: "Free",
-  components: {
-    DigitalClock
-  },
-  data() {
-    return {
-      roomFreeTill: ""
-    };
-  },
-  methods: {
-    changeLocale(locale) {
-      i18n.locale = locale;
-    },
-    reserveRoom: function() {
-      router.push("/reserve");
+    export default {
+        props:['roomInfo'],
+        name: "Free",
+        components: {
+            DigitalClock
+        },
+        data() {
+            return {
+                roomFreeTill: ''
+            }
+        },
+        methods: {
+            reserveRoom: function() {
+                router.push("/reserve");
+            },
+            freeRooms: function() {
+                router.push("/free");
+            }
+        }
     }
-  }
-};
 </script>
 
 <style scoped>

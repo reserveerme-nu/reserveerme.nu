@@ -35,15 +35,19 @@
 
   "extend": {
     "title": "Extend Meeting",
-    "question": "For how long would you like to extend the meeting?",
+    "duration": "For how long would you like to extend the meeting?",
     "confirm": "CONFIRM",
     "cancel": "CANCEL"
   },
 
   "reserve": {
     "title": "Reserve",
-    "question": "How long is the meeting going to be?",
+    "when": "For when would you like to reserve the room?",
+    "direct": "NOW",
+    "future": "FUTURE",
+    "duration": "How long is the meeting going to be?",
     "who": "Who are you?",
+    "reserve": "RESERVE",
     "start": "@:reserved.start",
     "cancel": "@:extend.cancel"
   },

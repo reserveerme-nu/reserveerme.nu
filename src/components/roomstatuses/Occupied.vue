@@ -43,7 +43,7 @@
         </template>
         <b-col>
           <b-row>
-            <p class="modal-txt">{{ $t('extend.question') }}</p>
+            <p class="modal-txt">{{ $t('extend.duration') }}</p>
           </b-row>
           <b-row>
             <button

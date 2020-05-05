@@ -13,7 +13,36 @@
                 <b-row>
                     <b-col>
                         <br><br><br>
-                        <p>{{ $t('reserve.question') }}</p>
+                        <p>{{ $t('reserve.when') }}</p>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <button type="button" v-bind:class="{ active: reserveNow }" v-on:click="this.directReserve">{{ $t('reserve.direct') }}</button>
+                        <button type="button" v-bind:class="{ active: !reserveNow }" v-on:click="this.futureReserve">{{ $t('reserve.future') }}</button>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <datetimepicker
+                                v-if="reserveNow === false"
+                                type="datetime"
+                                input-style="
+                                    font-size: 22pt; color: #009ddc;
+                                    float: left;
+                                    margin: 20px 20px 20px 0px;
+                                    width: 600px;
+                                    height: 40px;
+                                    border-bottom: solid medium #646464;"
+                                v-model="datetime"
+                                class="datetime-picker">
+                        </datetimepicker>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <br><br><br>
+                        <p>{{ $t('reserve.duration') }}</p>
                     </b-col>
                 </b-row>
                 <b-row>
@@ -36,7 +65,7 @@
                     </b-col>
                 </b-row>
                 <div id="options">
-                    <button id="start" type="button" v-on:click="this.makeReservation">{{ $t('reserve.start') }}</button>
+                    <button id="start" type="button" v-on:click="this.makeReservation">{{ this.buttonText }}</button>
                     <button id="cancel" type="button" v-on:click="this.cancel">{{ $t('reserve.cancel') }}</button>
                 </div>
             </b-col>
@@ -57,6 +86,8 @@
 <script>
     import Calender from '../components/Calender.vue'
     import DigitalClock from "vue-digital-clock";
+    import { Datetime } from 'vue-datetime';
+    import { Settings } from 'luxon';
     import router from "../router";
     import Service from "../api.service.js";
 
@@ -65,20 +96,35 @@
         name: "ReserveRoom",
         components: {
             DigitalClock,
+            datetimepicker: Datetime,
             Calender
         },
         data() {
             return {
+                reserveNow: true,
                 isActive15: true,
                 isActive30: false,
                 isActive45: false,
                 isActive60: false,
                 time: 15,
                 userId: 1,
-                issuer: ""
+                issuer: "...",
+                datetime: new Date().toJSON(),
+                buttonText: this.$t('reserve.start')
             }
         },
         methods: {
+            update: function() {
+                Settings.defaultLocale = this.$i18n.locale;
+            },
+            directReserve: function() {
+                this.reserveNow = true;
+                this.buttonText = this.$t('reserve.start');
+            },
+            futureReserve: function() {
+                this.reserveNow = false;
+                this.buttonText = this.$t('reserve.reserve');
+            },
             resetTime: function() {
                 this.isActive15 = false;
                 this.isActive30 = false;
@@ -106,14 +152,33 @@
                 this.time = 60;
             },
             makeReservation: function() {
-                Service.CreateReservation(this.roomInfo.roomId, this.time, this.issuer).then(response => {
+                if (this.reserveNow)
+                {
+                    Service.CreateDirectReservation(this.roomInfo.roomId, this.time, this.issuer).then(response => {
+                        console.log(response);
+                        this.startMeeting();
+                    })
+                }
+                else
+                {
+                    Service.CreateReservation(this.roomInfo.roomId, this.datetime, this.time, this.issuer).then(response => {
                         console.log(response);
                         router.push("/");
-                })
+                    })
+                }
+            },
+            startMeeting: function() {
+                Service.StartMeeting(this.roomInfo.roomId).then(response => {
+                    console.log(response);
+                    router.push("/");
+                });
             },
             cancel: function() {
                 router.push("/");
             }
+        },
+        mounted() {
+            this.update();
         }
     }
 </script>
@@ -148,7 +213,7 @@
         font-size: 30px;
         padding-left: 15px;
         padding-right: 15px;
-        margin: 20px 20px 20px 0px;
+        margin: 0px 20px 20px 0px;
         float: left;
         border: solid medium #646464;
         background: transparent;
@@ -201,5 +266,19 @@
         bottom: 10px;
         right: 10px;
     }
+</style>
 
+<style >
+    .datetime-picker .vdatetime-popup__header,
+    .datetime-picker .vdatetime-calendar__month__day--selected > span > span,
+    .datetime-picker .vdatetime-calendar__month__day--selected:hover > span > span {
+        background: #009ddc;
+    }
+
+    .datetime-picker .vdatetime-year-picker__item--selected,
+    .datetime-picker .vdatetime-month-picker__item--selected,
+    .datetime-picker .vdatetime-time-picker__item--selected,
+    .datetime-picker .vdatetime-popup__actions__button {
+        color: #009ddc;
+    }
 </style>
