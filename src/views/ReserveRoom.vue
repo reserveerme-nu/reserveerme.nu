@@ -251,6 +251,11 @@
         padding-right: 50px;
         padding-top: 10px;
     }
+    #calenderDiv {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+    }
     #options{
         position: absolute;
         bottom: 50px;
@@ -264,7 +269,7 @@
     .locale-changer{
         position: absolute;
         bottom: 10px;
-        right: 10px;
+        right: 30px;
     }
 </style>
 

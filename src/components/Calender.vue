@@ -14,7 +14,7 @@
                 config: {
                     locale: "nl-nl",
                     viewType: "Day",
-                    cellHeight: 45,
+                    cellHeight: (window.innerHeight - 31) / 18,
                     timeRangeSelectedHandling: "Enabled",
                     // onTimeRangeSelected: function (args) {
                     //     DayPilot.Modal.prompt("Create a new event:", "Event 1").then(function(modal) {
@@ -78,8 +78,4 @@
     #dp {
         height: 100vh;
     }
-</style>
-
-<style>
-
 </style>
