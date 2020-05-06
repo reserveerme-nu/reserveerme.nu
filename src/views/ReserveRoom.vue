@@ -108,7 +108,7 @@
                 isActive60: false,
                 time: 15,
                 userId: 1,
-                issuer: "...",
+                issuer: "",
                 datetime: new Date().toJSON(),
                 buttonText: this.$t('reserve.start')
             }
