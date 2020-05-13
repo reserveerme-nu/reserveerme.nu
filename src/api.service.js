@@ -35,4 +35,10 @@ export default class ApiService {
         console.log(roomId);
         return axios.get("https://localhost:5001/reservations/calendar");
     }
+    static async SetExchangeCredentials(username, password) {
+        return axios.post(`https://localhost:5001/config/setcredentials`, {
+            username: username,
+            password: password
+        });
+    }
 }

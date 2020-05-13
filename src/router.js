@@ -6,6 +6,7 @@ Vue.use(Router);
 import Room from './views/Room.vue';
 import ReserveRoom from './views/ReserveRoom.vue';
 import FreeRooms from './views/FreeRooms.vue'
+import Admin from "./views/Admin";
 
 const router = new Router({
     mode: 'history',
@@ -25,6 +26,11 @@ const router = new Router({
             path: '/free',
             name: 'FreeRooms',
             component: FreeRooms
+        },
+        {
+            path: '/admin',
+            name: 'Admin',
+            component: Admin
         }
     ]
 })
