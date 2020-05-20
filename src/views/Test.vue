@@ -19,8 +19,8 @@
                 console.log("<<<~-    [C O N N E C T E D]   -~>>>")
             }
 
-            this.ws.onmessage = function(event) {
-                console.log(event.data)
+            this.ws.onmessage = function() {
+                console.log("PING")
             }
 
         },
