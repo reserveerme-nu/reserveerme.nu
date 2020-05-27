@@ -6,6 +6,7 @@
     import {DayPilot, DayPilotCalendar} from 'daypilot-pro-vue'
     import Vue from 'vue'
     import Service from "../api.service";
+    import WS from '../ws.service';
 
     export default {
         name: 'Calendar',
@@ -34,6 +35,7 @@
                     eventResizeHandling: "Disabled",
                     eventClickHandling: "Disabled",
                     eventHoverHandling: "Disabled",
+
                 },
             }
         },
@@ -49,7 +51,7 @@
             }
         },
         methods: {
-            loadEvents() {
+            loadEvents(wsEvent) {
                 const events = [];
                 Service.GetSchedule(1).then(response => {
                     response.data.forEach(object =>{
@@ -62,14 +64,22 @@
                     })
                 });
 
-
                 Vue.set(this.config, "events", events);
+
+                if(wsEvent != null){
+                    this.calendar.message(wsEvent.data);
+                }
             }
         },
         mounted: function() {
             this.loadEvents();
 
-            this.calendar.message("Loading schedule...");
+            WS.onopen = function() {
+                console.log("<<<~-    [C O N N E C T E D]   -~>>>")
+            }
+
+            WS.onmessage = this.loadEvents;
+
         }
     }
 </script>

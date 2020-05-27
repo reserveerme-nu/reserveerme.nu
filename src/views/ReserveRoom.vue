@@ -90,6 +90,7 @@
     import { Settings } from 'luxon';
     import router from "../router";
     import Service from "../api.service.js";
+    import WS from '../ws.service';
 
     export default {
         props:['roomInfo'],
@@ -110,7 +111,7 @@
                 userId: 1,
                 issuer: "",
                 datetime: new Date().toJSON(),
-                buttonText: this.$t('reserve.start')
+                buttonText: this.$t('reserve.start'),
             }
         },
         methods: {
@@ -162,6 +163,7 @@
                 else
                 {
                     Service.CreateReservation(this.roomInfo.roomId, this.datetime, this.time, this.issuer).then(response => {
+                        WS.send("Websocket updated")
                         console.log(response);
                         router.push("/");
                     })

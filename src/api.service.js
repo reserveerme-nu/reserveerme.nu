@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default class ApiService {
+
     static async GetStatus(roomId) {
         return axios.get(
             `https://localhost:5001/reservations/status/${roomId}`
