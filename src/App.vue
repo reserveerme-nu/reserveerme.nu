@@ -5,10 +5,10 @@
 </template>
 
 <script>
+
 export default {
-  name: 'App',
-  components: {
-  },
+  name: "App",
+  components: {},
   data() {
     return {
       roomInfo: {
@@ -16,13 +16,12 @@ export default {
         roomName: "Asimov",
         roomFloor: "4th",
         roomSize: 4,
-        roomStatus: 'loading'
+        roomStatus: "loading"
       }
-    }
-  }
-}
+    };
+  },
+};
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
